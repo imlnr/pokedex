@@ -2,6 +2,11 @@
 
 A modern web application built with React and Node.js, featuring a robust frontend and backend architecture.
 
+## 🌐 Live Demo
+
+- Frontend: [https://gallgher-and-mohan.vercel.app/](https://gallgher-and-mohan.vercel.app/)
+- Backend API: [https://gallgher-and-mohan.onrender.com](https://gallgher-and-mohan.onrender.com)
+
 ## 🚀 Technology Stack
 
 ### Frontend
