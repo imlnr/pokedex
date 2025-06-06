@@ -1,0 +1,46 @@
+import axios from "axios";
+import Cookies from "js-cookie";
+import type { Dispatch } from "redux";
+import { GET_POKEMON_DATA_FAILURE, GET_POKEMON_DATA_REQUEST, GET_POKEMON_DATA_SUCCESS, GET_USER_FAILURE, GET_USER_REQUEST, GET_USER_SUCCESS } from "./action-types";
+
+const url = import.meta.env.VITE_BACKEND_URL || "";
+
+const getHeaders = () => {
+    const token = Cookies.get('accessToken');
+    if (!token) {
+        throw new Error("No login data found in cookies");
+    }
+    const headers = {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json'
+    };
+    return headers;
+}
+
+export const getCurrentUserData = () => async (dispatch: Dispatch) => {
+    dispatch({ type: GET_USER_REQUEST })
+    try {
+        const response = await axios.get(`${url}/user/me`, { headers: getHeaders() })
+        const responseData = response.data;
+        if (response.data) {
+            dispatch({ type: GET_USER_SUCCESS, payload: responseData?.user })
+        }
+        return responseData
+    } catch (error) {
+        dispatch({ type: GET_USER_FAILURE })
+    }
+}
+
+export const getPokemonData = (page: number) => async (dispatch: Dispatch) => {
+    dispatch({ type: GET_POKEMON_DATA_REQUEST })
+    try {
+        const response = await axios.get(`${url}/pokemon/all?page=${page}`, { headers: getHeaders() });
+        const responseData = response.data;
+        if (responseData) {
+            dispatch({ type: GET_POKEMON_DATA_SUCCESS, payload: responseData?.pokemons })
+        }
+        return responseData
+    } catch (error) {
+        dispatch({ type: GET_POKEMON_DATA_FAILURE })
+    }
+}
