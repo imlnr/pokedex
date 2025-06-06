@@ -7,6 +7,13 @@ A modern web application built with React and Node.js, featuring a robust fronte
 - Frontend: [https://gallgher-and-mohan.vercel.app/](https://gallgher-and-mohan.vercel.app/)
 - Backend API: [https://gallgher-and-mohan.onrender.com](https://gallgher-and-mohan.onrender.com)
 
+## 📸 Screenshots
+
+![Screenshot 1](screenshots/screenshot1.png)
+![Screenshot 2](screenshots/screenshot2.png)
+![Screenshot 3](screenshots/screenshot3.png)
+![Screenshot 4](screenshots/screenshot4.png)
+
 ## 🚀 Technology Stack
 
 ### Frontend
