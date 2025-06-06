@@ -9,10 +9,10 @@ A modern web application built with React and Node.js, featuring a robust fronte
 
 ## 📸 Screenshots
 
-![Screenshot 1](https://github.com/user-attachments/assets/2d68e7d5-3643-4950-a9b5-be51a1f9c94e)
-![Screenshot 2](https://github.com/user-attachments/assets/e0ab25d6-bf45-4200-89cc-27186dcb74ea)
-![Screenshot 3](https://github.com/user-attachments/assets/ed237f41-6074-42af-a944-89fa4f0fc774)
-![Screenshot 4](https://github.com/user-attachments/assets/3ed98309-cea0-42de-a6ae-fcb1bc47f3fe)
+<img src="https://github.com/user-attachments/assets/2d68e7d5-3643-4950-a9b5-be51a1f9c94e" width="400" alt="Screenshot 1"/>
+<img src="https://github.com/user-attachments/assets/e0ab25d6-bf45-4200-89cc-27186dcb74ea" width="400" alt="Screenshot 2"/>
+<img src="https://github.com/user-attachments/assets/ed237f41-6074-42af-a944-89fa4f0fc774" width="400" alt="Screenshot 3"/>
+<img src="https://github.com/user-attachments/assets/3ed98309-cea0-42de-a6ae-fcb1bc47f3fe" width="400" alt="Screenshot 4"/>
 
 ## 🚀 Technology Stack
 
