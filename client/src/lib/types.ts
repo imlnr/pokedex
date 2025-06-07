@@ -12,6 +12,7 @@ export interface AppState {
     pokemonData: PokemonData[];
     isError: boolean;
     isLoading: boolean;
+    singlePokemon: UserData
 }
 export interface AppAction {
     type: string;

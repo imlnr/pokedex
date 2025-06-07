@@ -1,9 +1,12 @@
+import { GET_LOGOUT_USER } from '@/redux/AppReducer/action-types';
 import Cookies from 'js-cookie';
 import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 const Logout = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     useEffect(() => {
         // Simulate logout process
@@ -11,6 +14,7 @@ const Logout = () => {
             // Clear any auth tokens or user data here
             Cookies.remove('accessToken');
             Cookies.remove("isLoggedIn")
+            dispatch({ type: GET_LOGOUT_USER })
             // Redirect to login page
             navigate('/login');
         }, 2000);

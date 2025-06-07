@@ -42,7 +42,7 @@ export function LoginForm({
             dispatch({ type: GET_USER_LOGIN });
             dispatch({ type: GET_USER_SUCCESS, payload: userData })
 
-            navigate("/")
+            navigate("/dashboard")
         },
         onError: (error) => {
             console.log('Login Failed:', error);
