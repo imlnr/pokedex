@@ -16,7 +16,7 @@ const Welcome = () => {
                                 <img
                                     src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"
                                     alt="Pikachu"
-                                    className="h-8 w-8 mr-2"
+                                    className="h-12 w-12 mr-2"
                                 />
                                 <span className="text-xl font-bold text-primary">PokéDex</span>
                             </Link>
