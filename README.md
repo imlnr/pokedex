@@ -14,22 +14,20 @@ A modern web application built with React and Node.js, featuring a robust fronte
 <img width="1470" alt="Screenshot 2025-06-07 at 11 06 33 PM" src="https://github.com/user-attachments/assets/61a0ec7f-bc90-4db5-8c29-8bdb22acb23b" />
 #### Login Page:
 `/login`
-
 <img width="1470" alt="Screenshot 2025-06-07 at 11 06 05 PM" src="https://github.com/user-attachments/assets/0cd485fc-b9ee-4d74-bf88-44fee589224f" />
 #### Pokemon Dashboard:
 `/dashboard`
-
 <img width="1425" alt="Screenshot 2025-06-07 at 10 56 02 PM" src="https://github.com/user-attachments/assets/ddc0daa2-72ee-4688-9139-be83ebe36a38" />
 #### Single Pokemon view:
-
 <img width="1469" alt="Screenshot 2025-06-07 at 10 57 04 PM" src="https://github.com/user-attachments/assets/d183023a-9ef9-4c08-abc1-57619dd891ed" />
 #### Search View:
-
 <img width="1425" alt="Screenshot 2025-06-07 at 10 57 35 PM" src="https://github.com/user-attachments/assets/c96a362f-5aa4-4f6e-93f3-6b420f4071b1" />
 #### Searched single Pokemon View:
-
 <img width="1425" alt="Screenshot 2025-06-07 at 10 58 04 PM" src="https://github.com/user-attachments/assets/1ee4701d-aacd-449f-9c27-fa280a0d37ac" />
+#### Profile View:
+`/profile`
 <img width="1424" alt="Screenshot 2025-06-07 at 10 59 30 PM" src="https://github.com/user-attachments/assets/451cf4e7-9c6b-497b-9384-d0d3d60c6d42" />
+#### Sidebar Closed View:
 <img width="1425" alt="Screenshot 2025-06-07 at 11 00 16 PM" src="https://github.com/user-attachments/assets/ecdea5a3-bf39-43d1-8cb0-5d9577cc0c56" />
 
 
