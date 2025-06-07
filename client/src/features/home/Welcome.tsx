@@ -1,7 +1,10 @@
 import { Button } from '@/components/ui/button';
+import type { AppState } from '@/lib/types';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 const Welcome = () => {
+    const isLoggedIn = useSelector((e: AppState) => e.isLoggedIn);
     return (
         <div className="min-h-screen w-full bg-gradient-to-b from-blue-100 to-white">
             {/* Navigation Bar */}
@@ -19,11 +22,18 @@ const Welcome = () => {
                             </Link>
                         </div>
                         <div className="flex items-center space-x-4">
-                            <Link to="/login">
-                                <Button variant="default">
-                                    Login
-                                </Button>
-                            </Link>
+                            {
+                                isLoggedIn ? <Link to="/dashboard">
+                                    <Button variant="default">
+                                        Dashboard
+                                    </Button>
+                                </Link> :
+                                    <Link to="/login">
+                                        <Button variant="default">
+                                            Login
+                                        </Button>
+                                    </Link>
+                            }
                         </div>
                     </div>
                 </div>
