@@ -88,7 +88,7 @@ const PaginatedDashboard = () => {
           pokemons.map((pokemon) => (
             <Suspense key={pokemon.id}>
               <Card
-                className='transition-transform duration-200 hover:shadow-lg cursor-pointer h-[300px]'
+                className='transition-transform duration-200 hover:shadow-lg cursor-pointer h-[300px] group'
                 onClick={(e) => handleCardClick(pokemon, e)}
               >
                 <CardHeader className='flex items-center justify-between'>
@@ -103,7 +103,7 @@ const PaginatedDashboard = () => {
                       loading="lazy"
                       src={pokemon.image}
                       alt={pokemon.name}
-                      className="absolute inset-0 w-full h-full object-contain"
+                      className="absolute inset-0 w-full h-full object-contain transition-all duration-300 group-hover:scale-110"
                       onError={(e) => {
                         const target = e.target as HTMLImageElement;
                         target.src = "https://placehold.co/400x400?text=Pokemon+Not+Found";
