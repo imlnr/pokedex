@@ -56,9 +56,9 @@ export default function SidebarWrapper({ children }: SidebarWrapperProps) {
                             orientation="vertical"
                             className="mr-2 data-[orientation=vertical]:h-4"
                         />
-                        <div className="relative">
+                        <div className="relative w-full max-w-[300px] sm:max-w-[400px] md:max-w-[500px]">
                             <Input
-                                className="pl-10 pr-10 min-w-md"
+                                className="pl-10 pr-10 w-full"
                                 placeholder="Search Pokemon..."
                                 value={input}
                                 onChange={handleChange}

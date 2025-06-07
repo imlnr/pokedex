@@ -53,10 +53,19 @@ export function LoginForm({
 
     return (
         <div className={cn("flex flex-col gap-6", className)} {...props}>
+            <div className="flex items-center justify-center">
+                <img
+                    src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"
+                    alt="Pikachu"
+                    className="h-8 w-8 mr-2"
+                />
+                <span className="text-xl font-bold text-primary">PokéDex</span>
+            </div>
             <Card>
                 <CardHeader className="text-center">
                     <CardTitle className="text-xl">Welcome</CardTitle>
                     <CardDescription>
+
                         Login with your Google account
                     </CardDescription>
                 </CardHeader>
