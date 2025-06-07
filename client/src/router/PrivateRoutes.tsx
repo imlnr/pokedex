@@ -2,6 +2,8 @@ import React from 'react';
 import Cookies from "js-cookie";
 // import { useNavigate } from "react-router-dom"; // Correct import
 import Login from '@/pages/Login';
+import { useSelector } from 'react-redux';
+import type { AppState } from '@/lib/types';
 
 interface PrivateRoutesProps {
     children: React.ReactNode;
@@ -9,7 +11,9 @@ interface PrivateRoutesProps {
 
 const PrivateRoutes: React.FC<PrivateRoutesProps> = ({ children }) => {
     // const navigate = useNavigate();
-    const isLoggedIn = Cookies.get("isLoggedIn") && Cookies.get("accessToken");
+    const loginstate = useSelector((e: AppState) => e.isLoggedIn)
+
+    const isLoggedIn = loginstate || Cookies.get("isLoggedIn") && Cookies.get("accessToken");
 
     // useEffect(() => {
     //     if (!isLoggedIn) {

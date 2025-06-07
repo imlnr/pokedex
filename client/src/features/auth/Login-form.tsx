@@ -12,7 +12,7 @@ import { useNavigate } from "react-router"
 import axios from "axios"
 import Cookies from "js-cookie"
 import { useDispatch } from "react-redux"
-import { GET_USER_FAILURE, GET_USER_REQUEST, GET_USER_SUCCESS } from "@/redux/AppReducer/action-types"
+import { GET_USER_FAILURE, GET_USER_LOGIN, GET_USER_REQUEST, GET_USER_SUCCESS } from "@/redux/AppReducer/action-types"
 
 export function LoginForm({
     className,
@@ -39,7 +39,9 @@ export function LoginForm({
 
             const userData = response.data;
             console.log(userData)
+            dispatch({ type: GET_USER_LOGIN });
             dispatch({ type: GET_USER_SUCCESS, payload: userData })
+
             navigate("/")
         },
         onError: (error) => {
