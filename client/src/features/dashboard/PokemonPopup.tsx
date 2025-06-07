@@ -4,11 +4,12 @@ import { Progress } from "@/components/ui/progress";
 import type { AppState } from "@/lib/types";
 import { getSinglePokemon } from "@/redux/AppReducer/action";
 import { motion, AnimatePresence } from "framer-motion";
-import { X } from "lucide-react";
+import { X, ArrowLeft, ArrowRight, Smartphone } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getColorClass } from "./dashboardUtils";
 import { Skeleton } from "@/components/ui/skeleton";
+import { useSwipeable } from "react-swipeable";
 // import { Pokemon } from "@/lib/types";
 
 interface PokemonPopupProps {
@@ -108,6 +109,23 @@ const PokemonPopup = ({ pokemon, isOpen, onClose, originPosition }: PokemonPopup
     const { isLoading, singlePokemon } = useSelector((e: AppState) => e);
     const dispatch = useDispatch();
     const [currentPokemonId, setCurrentPokemonId] = useState<number | null>(null);
+    const [showHint, setShowHint] = useState(true);
+
+    // Add swipe handlers
+    const swipeHandlers = useSwipeable({
+        onSwipedLeft: () => {
+            if (currentPokemonId && currentPokemonId < 1302) {
+                setCurrentPokemonId(currentPokemonId + 1);
+            }
+        },
+        onSwipedRight: () => {
+            if (currentPokemonId && currentPokemonId > 1) {
+                setCurrentPokemonId(currentPokemonId - 1);
+            }
+        },
+        preventScrollOnSwipe: true,
+        trackMouse: false
+    });
 
     useEffect(() => {
         if (pokemon?.id) {
@@ -140,6 +158,14 @@ const PokemonPopup = ({ pokemon, isOpen, onClose, originPosition }: PokemonPopup
         return () => window.removeEventListener('keydown', handleKeyDown);
     }, [isOpen, currentPokemonId]);
 
+    useEffect(() => {
+        if (isOpen) {
+            setShowHint(true);
+            const timer = setTimeout(() => setShowHint(false), 3000);
+            return () => clearTimeout(timer);
+        }
+    }, [isOpen]);
+
     if (!isOpen) return null;
     // if (isLoading) return <div>Loading....</div>;
 
@@ -154,6 +180,28 @@ const PokemonPopup = ({ pokemon, isOpen, onClose, originPosition }: PokemonPopup
                             <X className="h-4 w-4" />
                             <span className="sr-only">Close</span>
                         </DialogClose>
+
+                        {/* Navigation Hint */}
+                        <AnimatePresence>
+                            {showHint && (
+                                <motion.div
+                                    initial={{ opacity: 0, y: -20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, y: -20 }}
+                                    className="absolute top-4 left-1/2 -translate-x-1/2 bg-black/80 text-white px-4 py-2 rounded-full text-sm flex items-center gap-2 z-30"
+                                >
+                                    <div className="hidden sm:flex items-center gap-1">
+                                        <ArrowLeft className="w-4 h-4" />
+                                        <span>Arrow Keys</span>
+                                        <ArrowRight className="w-4 h-4" />
+                                    </div>
+                                    <div className="flex sm:hidden items-center gap-1">
+                                        <Smartphone className="w-4 h-4" />
+                                        <span>Swipe Left/Right</span>
+                                    </div>
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
 
                         {/* Watermark hashtag */}
                         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
@@ -188,6 +236,7 @@ const PokemonPopup = ({ pokemon, isOpen, onClose, originPosition }: PokemonPopup
                                 stiffness: 300
                             }}
                             className="p-6 relative z-10 overflow-y-auto max-h-[90vh]"
+                            {...swipeHandlers}
                         >
                             {isLoading ? (
                                 <PokemonPopupSkeleton />
