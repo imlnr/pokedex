@@ -63,7 +63,7 @@ export const getSinglePokemon = async (req: Request, res: Response) => {
         const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`);
         const colorValue = await axios.get(`https://pokeapi.co/api/v2/pokemon-species/${id}`);
 
-        const { height, weight, abilities, stats } = response.data;
+        const { height, weight, abilities, stats, moves, types } = response.data;
 
         const pokemon = {
             name: response.data.name,
@@ -80,6 +80,8 @@ export const getSinglePokemon = async (req: Request, res: Response) => {
                 special_defense: stats.find((s: any) => s.stat.name === "special-defense")?.base_stat,
                 speed: stats.find((s: any) => s.stat.name === "speed")?.base_stat,
             },
+            moves: moves.map((e: any) => e?.move?.name),
+            types: types.map((e: any) => e?.type?.name),
             color: colorValue.data.color.name
         };
 

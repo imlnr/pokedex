@@ -10,6 +10,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { getColorClass } from "./dashboardUtils";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useSwipeable } from "react-swipeable";
+import { Badge } from "@/components/ui/badge";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 // import { Pokemon } from "@/lib/types";
 
 interface PokemonPopupProps {
@@ -248,9 +250,9 @@ const PokemonPopup = ({ pokemon, isOpen, onClose, originPosition }: PokemonPopup
                                             <h2 className="text-3xl font-bold capitalize">{singlePokemon.name}</h2>
                                             <div className="flex gap-2 mt-2 justify-center md:justify-start">
                                                 {singlePokemon.types?.map((type: string) => (
-                                                    <span key={type} className="px-3 py-1 rounded-full text-sm bg-gray-100 capitalize">
+                                                    <Badge key={type} className="px-3 py-1 rounded-full text-sm capitalize">
                                                         {type}
-                                                    </span>
+                                                    </Badge>
                                                 ))}
                                             </div>
                                         </div>
@@ -321,7 +323,40 @@ const PokemonPopup = ({ pokemon, isOpen, onClose, originPosition }: PokemonPopup
                                             </CardContent>
                                         </Card>
                                     </div>
-
+                                    {
+                                        singlePokemon?.moves && (
+                                            <Card>
+                                                <CardHeader>
+                                                    <CardTitle>Moves</CardTitle>
+                                                </CardHeader>
+                                                <CardContent className="flex flex-wrap justify-start gap-1">
+                                                    {singlePokemon?.moves?.slice(0, 10).map((move: string, index: number) => (
+                                                        <p key={move} className="text-muted-foreground text-sm">
+                                                            {move}{index < 9 ? ',' : ''}
+                                                        </p>
+                                                    ))}
+                                                    {singlePokemon?.moves?.length > 10 && (
+                                                        <TooltipProvider>
+                                                            <Tooltip>
+                                                                <TooltipTrigger>
+                                                                    <p className="text-muted-foreground text-sm cursor-pointer">...</p>
+                                                                </TooltipTrigger>
+                                                                <TooltipContent className="max-w-[300px] p-2">
+                                                                    <div className="flex flex-wrap gap-1">
+                                                                        {singlePokemon?.moves?.slice(10).map((move: string, index: number) => (
+                                                                            <p key={move} className="text-muted-foreground text-sm">
+                                                                                {move}{index < singlePokemon.moves.length - 11 ? ',' : ''}
+                                                                            </p>
+                                                                        ))}
+                                                                    </div>
+                                                                </TooltipContent>
+                                                            </Tooltip>
+                                                        </TooltipProvider>
+                                                    )}
+                                                </CardContent>
+                                            </Card>
+                                        )
+                                    }
                                     {singlePokemon.description && (
                                         <Card>
                                             <CardHeader>
