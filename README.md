@@ -14,8 +14,6 @@ Powered by the **PokéAPI**, PokéDex delivers real-time data with a clean UI an
 
 ---
 
-> Built with ❤️ by Laxminarayan Reddy
-
 
 ## 🌐 Live Demo
 
@@ -160,3 +158,6 @@ This project is licensed under the ISC License.
 3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
+
+
+> Built with ❤️ by Laxminarayan Reddy
