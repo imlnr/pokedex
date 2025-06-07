@@ -110,6 +110,16 @@ gallgher-and-mohan/
 - `npm run lint` - Run ESLint
 - `npm run preview` - Preview production build
 
+## 🔐 Environment Variables
+
+### Frontend (.env)
+Create a `.env` file in the server directory with the following variables:
+```
+VITE_GOOGLE_CLIENT_ID=your_google_client_id
+VITE_GOOGLE_CLIENT_SECRET=your_google_client_secret
+VITE_BACKEND_URL=backend_url
+```
+
 ### Backend
 - `npm run dev` - Start development server with hot reload
 - `npm run build` - Build TypeScript files
