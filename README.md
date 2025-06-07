@@ -8,8 +8,15 @@ A modern web application built with React and Node.js, featuring a robust fronte
 - Backend API: [https://gallgher-and-mohan.onrender.com](https://gallgher-and-mohan.onrender.com)
 
 ## 📸 Screenshots
+
+#### Landing Page:
+`/`
 <img width="1470" alt="Screenshot 2025-06-07 at 11 06 33 PM" src="https://github.com/user-attachments/assets/61a0ec7f-bc90-4db5-8c29-8bdb22acb23b" />
+#### Login Page:
+`/login`
 <img width="1470" alt="Screenshot 2025-06-07 at 11 06 05 PM" src="https://github.com/user-attachments/assets/0cd485fc-b9ee-4d74-bf88-44fee589224f" />
+#### Pokemon Dashboard:
+`/dashboard`
 <img width="1425" alt="Screenshot 2025-06-07 at 10 56 02 PM" src="https://github.com/user-attachments/assets/ddc0daa2-72ee-4688-9139-be83ebe36a38" />
 <img width="1469" alt="Screenshot 2025-06-07 at 10 57 04 PM" src="https://github.com/user-attachments/assets/d183023a-9ef9-4c08-abc1-57619dd891ed" />
 <img width="1425" alt="Screenshot 2025-06-07 at 10 57 35 PM" src="https://github.com/user-attachments/assets/c96a362f-5aa4-4f6e-93f3-6b420f4071b1" />
