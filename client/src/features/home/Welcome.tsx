@@ -26,7 +26,7 @@ const Welcome = () => {
                         <h3 className="font-medium text-lg mb-2">Profile</h3>
                         <p className="text-sm text-primary/70">Manage your account settings</p>
                     </Link>
-                    <Link
+                    {/* <Link
                         to="/services"
                         className="p-4 rounded-lg bg-primary/5 hover:bg-primary/10 transition-colors duration-200"
                     >
@@ -39,7 +39,7 @@ const Welcome = () => {
                     >
                         <h3 className="font-medium text-lg mb-2">Support</h3>
                         <p className="text-sm text-primary/70">Get help and contact support</p>
-                    </Link>
+                    </Link> */}
                 </div>
             </div>
         </div>
