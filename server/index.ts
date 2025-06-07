@@ -4,7 +4,16 @@ import PokemonRouter from "./routes/pokemon.routes";
 import userRouter from "./routes/user.routes";
 const app = express();
 const PORT = process.env.PORT || 4500;
-app.use(cors())
+
+// CORS configuration
+const corsOptions = {
+    origin: '*', // Allow all origins
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 app.use("/pokemon", PokemonRouter)
