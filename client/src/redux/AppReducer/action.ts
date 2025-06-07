@@ -1,7 +1,7 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 import type { Dispatch } from "redux";
-import { GET_LOADING_FALSE, GET_LOADING_TRUE, GET_POKEMON_DATA_FAILURE, GET_POKEMON_DATA_REQUEST, GET_POKEMON_DATA_SUCCESS, GET_SINGLE_POKEMON_FAILURE, GET_SINGLE_POKEMON_REQUEST, GET_SINGLE_POKEMON_SUCCESS, GET_USER_FAILURE, GET_USER_REQUEST, GET_USER_SUCCESS } from "./action-types";
+import { GET_LOADING_FALSE, GET_LOADING_TRUE, GET_LOGOUT_USER, GET_POKEMON_DATA_FAILURE, GET_POKEMON_DATA_REQUEST, GET_POKEMON_DATA_SUCCESS, GET_SINGLE_POKEMON_FAILURE, GET_SINGLE_POKEMON_REQUEST, GET_SINGLE_POKEMON_SUCCESS, GET_USER_FAILURE, GET_USER_REQUEST, GET_USER_SUCCESS } from "./action-types";
 
 const url = import.meta.env.VITE_BACKEND_URL || "";
 
@@ -28,6 +28,11 @@ export const getCurrentUserData = () => async (dispatch: Dispatch) => {
         return responseData
     } catch (error) {
         dispatch({ type: GET_USER_FAILURE })
+        Cookies.remove('accessToken');
+        Cookies.remove("isLoggedIn")
+        dispatch({ type: GET_LOGOUT_USER })
+        // Redirect to login page
+        window.location.href = '/login';
     }
 }
 
