@@ -46,7 +46,7 @@ export const fetAllPokemon = async (req: Request, res: Response) => {
             pokemons,
         });
     } catch (error) {
-        console.error('Error fetching pokemons:', error);
+        // console.error('Error fetching pokemons:', error);
         res.status(500).json({ error: 'Failed to fetch pokemons' });
     }
 };
@@ -87,7 +87,7 @@ export const getSinglePokemon = async (req: Request, res: Response) => {
 
         res.json(pokemon);
     } catch (error) {
-        console.error('Error fetching pokemon:', error);
+        // console.error('Error fetching pokemon:', error);
         res.status(500).json({ error: 'Failed to fetch pokemon' });
     }
 };
