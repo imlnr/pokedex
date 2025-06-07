@@ -1,6 +1,21 @@
 # PokéDex
 
-A modern web application built with React and Node.js, featuring a robust frontend and backend architecture.
+Welcome to **PokéDex**, a modern and fully responsive Pokémon web application built using **React** for the frontend and **Node.js** for the backend. This project offers a seamless and interactive experience for browsing, searching, and exploring detailed information about all your favorite Pokémon.
+
+Powered by the **PokéAPI**, PokéDex delivers real-time data with a clean UI and smooth performance. Whether you're a casual fan or a true Pokémon Master, this app is designed to make your Pokémon journey engaging and intuitive.
+
+## 🚀 Tech Stack
+
+- **Frontend:** React, Tailwind CSS, Axios
+- **Backend:** Node.js, Express
+- **API Integration:** PokéAPI
+- **Authentication (optional):** Google OAuth / JWT (if used)
+- **Deployment:** Vercel / Render (customize as needed)
+
+---
+
+> Built with ❤️ by Laxminarayan Reddy
+
 
 ## 🌐 Live Demo
 
