@@ -3,7 +3,6 @@ import {
     SidebarMenuButton,
     SidebarMenuItem,
 } from "@/components/ui/sidebar"
-import { AudioWaveform, } from "lucide-react"
 
 export function TeamSwitcher() {
 
