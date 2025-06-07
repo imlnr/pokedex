@@ -13,6 +13,7 @@ export interface AppState {
     isError: boolean;
     isLoading: boolean;
     singlePokemon: UserData
+    pageLoading: boolean
 }
 export interface AppAction {
     type: string;

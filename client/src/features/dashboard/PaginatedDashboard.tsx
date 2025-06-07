@@ -7,6 +7,7 @@ import { Suspense, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import PokemonSoundButton from './Sound';
 import PokemonPopup from './PokemonPopup';
+import { GET_LOADING_FALSE, GET_LOADING_TRUE } from '@/redux/AppReducer/action-types';
 
 const PaginatedDashboard = () => {
   const dispatch = useDispatch();
@@ -16,23 +17,25 @@ const PaginatedDashboard = () => {
   const [selectedPokemon, setSelectedPokemon] = useState<any>(null);
   const [popupPosition, setPopupPosition] = useState<{ x: number; y: number } | null>(null);
   const pokemons = useSelector((e: AppState) => e.pokemonData);
-  // const loading = useSelector((e: AppState) => e.isLoading);
-  const [loading, setLoading] = useState<boolean>(false);
+  const loading = useSelector((e: AppState) => e.pageLoading);
+  // const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        setLoading(true)
+        dispatch({ type: GET_LOADING_TRUE })
         const response = await dispatch(getPokemonData(page) as any);
         if (response) {
           const totalPages = Math.ceil(response.count / response.limit);
           setTotalPage(totalPages);
           setError(null);
         }
-        setLoading(false)
+        dispatch({ type: GET_LOADING_FALSE })
       } catch (err) {
         setError('Failed to fetch Pokemon data');
         console.error('Error fetching Pokemon data:', err);
+        dispatch({ type: GET_LOADING_FALSE })
+
       }
     };
 
@@ -85,7 +88,7 @@ const PaginatedDashboard = () => {
           pokemons.map((pokemon) => (
             <Suspense key={pokemon.id}>
               <Card
-                className='transition-transform duration-200 hover:shadow-lg cursor-pointer'
+                className='transition-transform duration-200 hover:shadow-lg cursor-pointer h-[300px]'
                 onClick={(e) => handleCardClick(pokemon, e)}
               >
                 <CardHeader className='flex items-center justify-between'>
@@ -94,14 +97,27 @@ const PaginatedDashboard = () => {
                     <PokemonSoundButton soundUrl={pokemon?.sounds?.latest} />
                   </div>
                 </CardHeader>
-                <CardContent>
-                  <img loading="lazy" src={pokemon.image} alt={pokemon.name} className="w-full h-auto" />
+                <CardContent className="h-[calc(100%-80px)]">
+                  <div className="relative w-full h-full">
+                    <img
+                      loading="lazy"
+                      src={pokemon.image}
+                      alt={pokemon.name}
+                      className="absolute inset-0 w-full h-full object-contain"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.src = "https://placehold.co/400x400?text=Pokemon+Not+Found";
+                        target.onerror = null; // Prevent infinite loop
+                      }}
+                    />
+                  </div>
                 </CardContent>
               </Card>
             </Suspense>
           ))
         }
       </div>
+
       <DynamicPagination onPageChange={setPage} currentPage={page} totalPages={totalPage} />
 
       <PokemonPopup

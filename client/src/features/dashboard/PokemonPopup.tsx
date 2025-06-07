@@ -47,7 +47,7 @@ const PokemonPopup = ({ pokemon, isOpen, onClose, originPosition }: PokemonPopup
 
                         {/* Watermark hashtag */}
                         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                            <span className="text-[300px] font-bold text-gray-200 select-none">
+                            <span className="text-[300px] font-bold text-gray-200/20 select-none">
                                 #{pokemon.id.toString().padStart(3, '0')}
                             </span>
                         </div>
@@ -102,7 +102,7 @@ const PokemonPopup = ({ pokemon, isOpen, onClose, originPosition }: PokemonPopup
                                 </div>
 
                                 {/* Stats Section */}
-                                <Card className="bg-transparent">
+                                <Card className="bg-transparent ">
                                     <CardHeader>
                                         <CardTitle>Base Stats</CardTitle>
                                     </CardHeader>

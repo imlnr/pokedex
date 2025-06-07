@@ -1,18 +1,50 @@
-
 import {
     SidebarInset,
     SidebarProvider,
     SidebarTrigger,
 } from "@/components/ui/sidebar"
 import { AppSidebar } from "./components/app-sidebar"
-import type { ReactNode } from "react"
+import { useCallback, useState, type ReactNode } from "react"
 import { Separator } from "@/components/ui/separator"
+import { Input } from "@/components/ui/input"
+import { Search, X } from "lucide-react"
+import { useDispatch } from "react-redux"
+import { debounce } from "./sidebarutils"
+import { getPokemonData, searchFilter } from "@/redux/AppReducer/action"
 
 interface SidebarWrapperProps {
     children: ReactNode
 }
 
 export default function SidebarWrapper({ children }: SidebarWrapperProps) {
+    const dispatch = useDispatch();
+    const [input, setInput] = useState('');
+
+    const handleSearch = (value: string) => {
+        console.log('Searching for:', value);
+        // You can replace this with an actual API call
+        dispatch(searchFilter(value) as any)
+    };
+
+    // Memoize the debounced version to avoid re-creating on every render
+    const debouncedSearch = useCallback(
+        debounce((value: string) => {
+            handleSearch(value);
+        }, 500),
+        []
+    );
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const value = e.target.value;
+        setInput(value);
+        debouncedSearch(value);
+    };
+
+    const handleClearState = () => {
+        setInput("")
+        dispatch(getPokemonData(1) as any);
+
+    }
     return (
         <SidebarProvider>
             <AppSidebar />
@@ -24,7 +56,16 @@ export default function SidebarWrapper({ children }: SidebarWrapperProps) {
                             orientation="vertical"
                             className="mr-2 data-[orientation=vertical]:h-4"
                         />
-
+                        <div className="relative">
+                            <Input
+                                className="pl-10 pr-10 min-w-md"
+                                placeholder="Search Pokemon..."
+                                value={input}
+                                onChange={handleChange}
+                            />
+                            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-500" />
+                            <X onClick={handleClearState} className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-500 cursor-pointer hover:text-gray-700" />
+                        </div>
                     </div>
                 </header>
                 <div className="flex-1 overflow-y-auto p-2">

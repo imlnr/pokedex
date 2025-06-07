@@ -10,9 +10,6 @@ export const fetAllPokemon = async (req: Request, res: Response) => {
         const response = await axios.get(
             `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`
         );
-        console.log(offset, limit)
-        console.log(`https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`)
-        console.log(response.data)
 
         const results = response.data.results;
 
@@ -34,6 +31,7 @@ export const fetAllPokemon = async (req: Request, res: Response) => {
 
                 return {
                     name: pokemon.name,
+                    url: pokemon.url,
                     id,
                     image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${id}.svg`,
                     sounds,
@@ -92,3 +90,48 @@ export const getSinglePokemon = async (req: Request, res: Response) => {
     }
 };
 
+export const getAllPokemons = async (req: Request, res: Response) => {
+    try {
+        const { name } = req.query;
+        const response = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=1002`);
+        let data = response.data.results.map((pokemon: any, index: number) => ({
+            ...pokemon,
+            id: index + 1
+        }));
+        console.log("name", name)
+        // If name query parameter exists, filter the results
+        if (name && typeof name === 'string') {
+            const searchTerm = name.toLowerCase();
+            data = data.filter((pokemon: any) =>
+                pokemon.name.toLowerCase().includes(searchTerm)
+            );
+        }
+        const pokemons = await Promise.all(
+            data.map(async (pokemon: any, index: number) => {
+
+                // Only fetch detailed data for sound/cry if offset is less than 1025
+                let sounds = { latest: "", legacy: "" };
+
+                const details = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon?.id}`);
+                const cries = details.data.cries;
+                sounds = {
+                    latest: cries?.latest || "",
+                    legacy: cries?.legacy || "",
+                };
+
+                return {
+                    name: pokemon.name,
+                    url: pokemon.url,
+                    id: pokemon?.id,
+                    image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemon?.id}.svg`,
+                    sounds,
+                };
+            })
+        );
+
+        res.json(pokemons);
+    } catch (error) {
+        // console.error('Error fetching pokemons:', error);
+        res.status(500).json({ error: 'Failed to fetch pokemons' });
+    }
+}
