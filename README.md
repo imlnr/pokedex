@@ -1,4 +1,4 @@
-# Gallagher and Mohan
+# PokéDex
 
 A modern web application built with React and Node.js, featuring a robust frontend and backend architecture.
 
@@ -9,10 +9,15 @@ A modern web application built with React and Node.js, featuring a robust fronte
 
 ## 📸 Screenshots
 
-<img src="https://github.com/user-attachments/assets/2d68e7d5-3643-4950-a9b5-be51a1f9c94e" width="400" alt="Screenshot 1"/>
-<img src="https://github.com/user-attachments/assets/e0ab25d6-bf45-4200-89cc-27186dcb74ea" width="400" alt="Screenshot 2"/>
-<img src="https://github.com/user-attachments/assets/ed237f41-6074-42af-a944-89fa4f0fc774" width="400" alt="Screenshot 3"/>
-<img src="https://github.com/user-attachments/assets/3ed98309-cea0-42de-a6ae-fcb1bc47f3fe" width="400" alt="Screenshot 4"/>
+<img src="https://github.com/user-attachments/assets/5b2e3785-e117-4ad6-9062-9af3e63f91e0" width="400" alt="Screenshot 1"/>
+<img src="https://github.com/user-attachments/assets/1f9bce0c-e111-44b7-91ce-3bd0e91ca0ac" width="400" alt="Screenshot 2"/>
+<img width="1425" alt="Screenshot 2025-06-07 at 10 56 02 PM" src="https://github.com/user-attachments/assets/ddc0daa2-72ee-4688-9139-be83ebe36a38" />
+<img width="1469" alt="Screenshot 2025-06-07 at 10 57 04 PM" src="https://github.com/user-attachments/assets/d183023a-9ef9-4c08-abc1-57619dd891ed" />
+<img width="1425" alt="Screenshot 2025-06-07 at 10 57 35 PM" src="https://github.com/user-attachments/assets/c96a362f-5aa4-4f6e-93f3-6b420f4071b1" />
+<img width="1425" alt="Screenshot 2025-06-07 at 10 58 04 PM" src="https://github.com/user-attachments/assets/1ee4701d-aacd-449f-9c27-fa280a0d37ac" />
+<img width="1424" alt="Screenshot 2025-06-07 at 10 59 30 PM" src="https://github.com/user-attachments/assets/451cf4e7-9c6b-497b-9384-d0d3d60c6d42" />
+<img width="1425" alt="Screenshot 2025-06-07 at 11 00 16 PM" src="https://github.com/user-attachments/assets/ecdea5a3-bf39-43d1-8cb0-5d9577cc0c56" />
+
 
 ## 🚀 Technology Stack
 
