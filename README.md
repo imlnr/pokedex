@@ -24,27 +24,33 @@ Powered by the **PokéAPI**, PokéDex delivers real-time data with a clean UI an
 
 #### Landing Page:
 `/`
-<img width="1425" alt="Screenshot 2025-06-08 at 3 06 49 PM" src="https://github.com/user-attachments/assets/1f8f0a36-0711-4c7c-81c3-5677aeb02192" />
+<img width="1425" alt="Landing Page" src="https://github.com/user-attachments/assets/1f8f0a36-0711-4c7c-81c3-5677aeb02192" />
+
 #### Login Page:
 `/login`
-<img width="1470" alt="Screenshot 2025-06-07 at 11 06 05 PM" src="https://github.com/user-attachments/assets/0cd485fc-b9ee-4d74-bf88-44fee589224f" />
-#### Pokemon Dashboard:
+<img width="1470" alt="Login Page" src="https://github.com/user-attachments/assets/0cd485fc-b9ee-4d74-bf88-44fee589224f" />
+
+#### Pokémon Dashboard:
 `/dashboard`
-<img width="1425" alt="Screenshot 2025-06-07 at 10 56 02 PM" src="https://github.com/user-attachments/assets/ddc0daa2-72ee-4688-9139-be83ebe36a38" />
-#### Single Pokemon view:
-> Use arrow keys (<-,->) to navigate on desktop, or swipe left/right on mobile devices.
-<img width="1470" alt="Screenshot 2025-06-08 at 3 10 00 PM" src="https://github.com/user-attachments/assets/a5125abc-3221-4173-8c0b-540b0992af4d" />
+<img width="1425" alt="Dashboard" src="https://github.com/user-attachments/assets/ddc0daa2-72ee-4688-9139-be83ebe36a38" />
+
+#### Single Pokémon View:
+> Use arrow keys (←, →) to navigate on desktop, or swipe left/right on mobile devices.
+<img width="1470" alt="Single Pokémon View" src="https://github.com/user-attachments/assets/a5125abc-3221-4173-8c0b-540b0992af4d" />
+
 #### Search View:
-<img width="1425" alt="Screenshot 2025-06-07 at 10 57 35 PM" src="https://github.com/user-attachments/assets/c96a362f-5aa4-4f6e-93f3-6b420f4071b1" />
-#### Searched single Pokemon View:
-> Use arrow keys (<-,->) to navigate on desktop, or swipe left/right on mobile devices
-<img width="1470" alt="Screenshot 2025-06-08 at 3 13 42 PM" src="https://github.com/user-attachments/assets/b8a47e5a-f8d6-49d4-89b5-2ad6ddd64705" />
+<img width="1425" alt="Search View" src="https://github.com/user-attachments/assets/c96a362f-5aa4-4f6e-93f3-6b420f4071b1" />
+
+#### Searched Single Pokémon View:
+> Use arrow keys (←, →) to navigate on desktop, or swipe left/right on mobile devices.
+<img width="1470" alt="Searched Pokémon View" src="https://github.com/user-attachments/assets/b8a47e5a-f8d6-49d4-89b5-2ad6ddd64705" />
+
 #### Profile View:
 `/profile`
-<img width="1424" alt="Screenshot 2025-06-07 at 10 59 30 PM" src="https://github.com/user-attachments/assets/451cf4e7-9c6b-497b-9384-d0d3d60c6d42" />
-#### Sidebar Closed View:
-<img width="1425" alt="Screenshot 2025-06-07 at 11 00 16 PM" src="https://github.com/user-attachments/assets/ecdea5a3-bf39-43d1-8cb0-5d9577cc0c56" />
+<img width="1424" alt="Profile View" src="https://github.com/user-attachments/assets/451cf4e7-9c6b-497b-9384-d0d3d60c6d42" />
 
+#### Sidebar Closed View:
+<img width="1425" alt="Sidebar Closed View" src="https://github.com/user-attachments/assets/ecdea5a3-bf39-43d1-8cb0-5d9577cc0c56" />
 
 ## 🚀 Technology Stack
 
