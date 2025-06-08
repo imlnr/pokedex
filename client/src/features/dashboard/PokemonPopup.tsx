@@ -206,8 +206,8 @@ const PokemonPopup = ({ pokemon, isOpen, onClose, originPosition }: PokemonPopup
                         </AnimatePresence>
 
                         {/* Watermark hashtag */}
-                        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                            <span className="text-[150px] sm:text-[200px] md:text-[250px] lg:text-[300px] font-bold text-gray-200/20 select-none">
+                        <div className="absolute top-0 left-0 right-0 flex justify-center pointer-events-none">
+                            <span className="text-[130px] sm:text-[150px] md:text-[170px] pt-8 md:pt-0 p-0 lg:text-[190px] leading-relaxed font-bold text-gray-200/20 select-none">
                                 #{currentPokemonId?.toString().padStart(3, '0')}
                             </span>
                         </div>
@@ -266,7 +266,7 @@ const PokemonPopup = ({ pokemon, isOpen, onClose, originPosition }: PokemonPopup
                                     </div>
 
                                     {/* Stats Section */}
-                                    <Card className="bg-transparent ">
+                                    <Card className="bg-transparent backdrop-blur-lg border border-none ">
                                         <CardHeader>
                                             <CardTitle>Base Stats</CardTitle>
                                         </CardHeader>
@@ -280,7 +280,7 @@ const PokemonPopup = ({ pokemon, isOpen, onClose, originPosition }: PokemonPopup
                                                         </div>
                                                         <Progress
                                                             value={(value as number) / maxStatValue * 100}
-                                                            className="h-6"
+                                                            className="h-6 "
                                                         />
                                                     </div>
                                                 ))}

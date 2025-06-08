@@ -137,3 +137,10 @@ html {
   overscroll-behavior-y: none;
   overscroll-behavior-x: none;
 } */
+
+
+.sticker-style {
+  filter: drop-shadow(0 0 0 white) drop-shadow(2px 2px 0 --primary-foreground);
+  width: 100px;
+  height: 100px;
+}
