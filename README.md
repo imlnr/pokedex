@@ -32,12 +32,12 @@ Powered by the **PokéAPI**, PokéDex delivers real-time data with a clean UI an
 `/dashboard`
 <img width="1425" alt="Screenshot 2025-06-07 at 10 56 02 PM" src="https://github.com/user-attachments/assets/ddc0daa2-72ee-4688-9139-be83ebe36a38" />
 #### Single Pokemon view:
-> Use arrow keys (-> ,<-) to navigate on desktop, or swipe left/right on mobile devices.
+> Use arrow keys (<-,->) to navigate on desktop, or swipe left/right on mobile devices.
 <img width="1470" alt="Screenshot 2025-06-08 at 3 10 00 PM" src="https://github.com/user-attachments/assets/a5125abc-3221-4173-8c0b-540b0992af4d" />
 #### Search View:
 <img width="1425" alt="Screenshot 2025-06-07 at 10 57 35 PM" src="https://github.com/user-attachments/assets/c96a362f-5aa4-4f6e-93f3-6b420f4071b1" />
 #### Searched single Pokemon View:
-> Use arrow keys (-> ,<-) to navigate on desktop, or swipe left/right on mobile devices.
+> Use arrow keys (<-,->) to navigate on desktop, or swipe left/right on mobile devices.
 <img width="1470" alt="Screenshot 2025-06-08 at 3 13 42 PM" src="https://github.com/user-attachments/assets/b8a47e5a-f8d6-49d4-89b5-2ad6ddd64705" />
 #### Profile View:
 `/profile`
