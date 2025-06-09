@@ -20,6 +20,9 @@ Powered by the **PokéAPI**, PokéDex delivers real-time data with a clean UI an
 - Frontend: [https://gallgher-and-mohan.vercel.app/](https://gallgher-and-mohan.vercel.app/)
 - Backend API: [https://gallgher-and-mohan.onrender.com](https://gallgher-and-mohan.onrender.com)
 
+## Video Presentation
+-- [presentation](https://www.loom.com/share/721b3c2671e4428eb36b3aa9275682c8?sid=6b6c50cc-1551-4a02-8bf9-a47a33d4fd83)
+
 ## 📸 Screenshots
 
 #### Landing Page:
