@@ -6,11 +6,16 @@ import { Separator } from "@/components/ui/separator";
 import { Skeleton } from "@/components/ui/skeleton";
 import type { AppState } from "@/lib/types";
 import { Mail, Phone, User } from "lucide-react";
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
 
 const ProfilePage = () => {
     const userData = useSelector((state: AppState) => state.userData);
     const isLoading = useSelector((state: AppState) => state.isLoading);
+
+    useEffect(() => {
+        document.title = "PokéDex - profile"
+    }, [])
 
     if (isLoading) {
         return (

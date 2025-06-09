@@ -18,7 +18,6 @@ const PaginatedDashboard = () => {
   const [popupPosition, setPopupPosition] = useState<{ x: number; y: number } | null>(null);
   const pokemons = useSelector((e: AppState) => e.pokemonData);
   const loading = useSelector((e: AppState) => e.pageLoading);
-  // const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -41,6 +40,9 @@ const PaginatedDashboard = () => {
 
     fetchData();
   }, [dispatch, page]);
+  // useEffect(() => {
+
+  // }, [])
 
   const handleCardClick = (pokemon: any, event: React.MouseEvent) => {
     const rect = event.currentTarget.getBoundingClientRect();

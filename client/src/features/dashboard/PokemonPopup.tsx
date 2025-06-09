@@ -168,6 +168,20 @@ const PokemonPopup = ({ pokemon, isOpen, onClose, originPosition }: PokemonPopup
         }
     }, [isOpen]);
 
+    // Add document title effect
+    useEffect(() => {
+        if (singlePokemon?.name) {
+            document.title = `PokéDex - ${singlePokemon.name}`;
+        } else {
+            document.title = 'PokéDex';
+        }
+
+        // Cleanup function to reset title when component unmounts
+        return () => {
+            document.title = 'PokéDex';
+        };
+    }, [singlePokemon?.name]);
+
     if (!isOpen) return null;
     // if (isLoading) return <div>Loading....</div>;
 

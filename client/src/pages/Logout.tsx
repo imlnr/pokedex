@@ -10,6 +10,7 @@ const Logout = () => {
 
     useEffect(() => {
         // Simulate logout process
+        document.title = "PokéDex - logout"
         const timer = setTimeout(() => {
             // Clear any auth tokens or user data here
             Cookies.remove('accessToken');

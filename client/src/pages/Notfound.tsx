@@ -1,6 +1,11 @@
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 const Notfound = () => {
+
+    useEffect(() => {
+        document.title = "NotFound"
+    }, [])
     return (
         <div className="min-h-screen w-full flex items-center justify-center px-8 py-12 bg-muted">
             <div className="max-w-2xl text-center animate-fade-in-up">

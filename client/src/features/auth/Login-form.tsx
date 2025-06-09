@@ -13,6 +13,7 @@ import axios from "axios"
 import Cookies from "js-cookie"
 import { useDispatch } from "react-redux"
 import { GET_USER_FAILURE, GET_USER_LOGIN, GET_USER_REQUEST, GET_USER_SUCCESS } from "@/redux/AppReducer/action-types"
+import { useEffect } from "react"
 
 export function LoginForm({
     className,
@@ -24,6 +25,9 @@ export function LoginForm({
         e.preventDefault()
 
     }
+    useEffect(() => {
+        document.title = "PokéDex - login"
+    }, [])
     const login = useGoogleLogin({
         onSuccess: async (tokenResponse) => {
             console.log('Login Success:', tokenResponse);
