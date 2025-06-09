@@ -6,7 +6,7 @@ Powered by the **PokéAPI**, PokéDex delivers real-time data with a clean UI an
 
 ## 🚀 Tech Stack
 
-- **Frontend:** React, Tailwind CSS, Axios
+- **Frontend:** React, Tailwind CSS, Shadcn UI
 - **Backend:** Node.js, Express
 - **API Integration:** PokéAPI
 - **Authentication (optional):** Google OAuth / JWT (if used)
