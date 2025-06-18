@@ -103,12 +103,20 @@ export const getAllPokemons = async (req: Request, res: Response) => {
         if (!fs.existsSync(pokemonDataPath)) {
             // If cache doesn't exist, fetch from API and create cache
             const response = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=1002`);
-            const pokemonsWithIds = response.data.results.map((pokemon: any, index: number) => ({
-                ...pokemon,
-                id: index + 1,
-                image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${index + 1}.svg`
-            }));
+            const pokemonsWithIds = response.data.results.map((pokemon: any) => {
+                // Extract ID from URL - URLs are in format: https://pokeapi.co/api/v2/pokemon/{id}/
+                const urlParts = pokemon.url.split('/');
+                const id = parseInt(urlParts[urlParts.length - 2]); // Get second to last part of URL
+                if (isNaN(id)) {
+                    throw new Error(`Invalid Pokemon ID from URL: ${pokemon.url}`);
+                }
 
+                return {
+                    ...pokemon,
+                    id,
+                    image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${id}.svg`
+                };
+            });
             // Save to cache file
             fs.writeFileSync(pokemonDataPath, JSON.stringify(pokemonsWithIds, null, 2));
         }
@@ -120,8 +128,9 @@ export const getAllPokemons = async (req: Request, res: Response) => {
         let filteredData = cachedData;
         if (name && typeof name === 'string') {
             const searchTerm = name.toLowerCase();
-            filteredData = cachedData.filter((pokemon: any) =>
-                pokemon.name.toLowerCase().includes(searchTerm)
+            filteredData = cachedData.filter((pokemon: any) => {
+                return pokemon.name.toLowerCase().includes(searchTerm)
+            }
             );
         }
 
@@ -129,27 +138,28 @@ export const getAllPokemons = async (req: Request, res: Response) => {
         const pokemons = await Promise.all(
             filteredData.map(async (pokemon: any) => {
                 let sounds = { latest: "", legacy: "" };
-                try {
-                    const details = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon.id}`);
-                    const cries = details.data.cries;
-                    sounds = {
-                        latest: cries?.latest || "",
-                        legacy: cries?.legacy || "",
-                    };
-                } catch (error) {
-                    console.error(`Error fetching sounds for Pokemon ${pokemon.id}:`, error);
+                if (pokemon.id && pokemon.id <= 1025) { // Only fetch sounds for valid IDs up to 1025
+                    try {
+                        const details = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon.id}`);
+                        const cries = details.data.cries;
+                        sounds = {
+                            latest: cries?.latest || "",
+                            legacy: cries?.legacy || "",
+                        };
+                    } catch (error) {
+                        console.error(`Error fetching sounds for Pokemon ${pokemon.id}:`, error);
+                    }
                 }
 
                 return {
                     name: pokemon.name,
                     url: pokemon.url,
                     id: pokemon.id,
-                    image: pokemon.image,
+                    image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemon.id}.svg`,
                     sounds,
                 };
             })
         );
-
         res.json(pokemons);
     } catch (error) {
         console.error('Error in getAllPokemons:', error);

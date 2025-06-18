@@ -21,10 +21,16 @@ export default function SidebarWrapper({ children }: SidebarWrapperProps) {
     const dispatch = useDispatch();
     const path = useLocation().pathname;
     const [input, setInput] = useState('');
+    const getAllData = () => {
+        dispatch(getPokemonData(1) as any);
+    }
 
     const handleSearch = (value: string) => {
         console.log('Searching for:', value);
         // You can replace this with an actual API call
+        if (value === "") {
+            return getAllData();
+        }
         dispatch(searchFilter(value) as any)
     };
 
@@ -42,11 +48,13 @@ export default function SidebarWrapper({ children }: SidebarWrapperProps) {
         debouncedSearch(value);
     };
 
+
+
     const handleClearState = () => {
         setInput("")
-        dispatch(getPokemonData(1) as any);
-
+        getAllData();
     }
+
     return (
         <SidebarProvider>
             <AppSidebar />
