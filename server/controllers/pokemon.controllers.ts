@@ -1,5 +1,7 @@
 import axios from "axios";
 import { Request, Response } from "express";
+import fs from "fs"
+import path from "path"
 
 export const fetAllPokemon = async (req: Request, res: Response) => {
     try {
@@ -95,37 +97,54 @@ export const getSinglePokemon = async (req: Request, res: Response) => {
 export const getAllPokemons = async (req: Request, res: Response) => {
     try {
         const { name } = req.query;
-        const response = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=1002`);
-        let data = response.data.results.map((pokemon: any, index: number) => ({
-            ...pokemon,
-            id: index + 1
-        }));
-        console.log("name", name)
-        // If name query parameter exists, filter the results
+        const pokemonDataPath = path.join(__dirname, "pokemondata.json");
+
+        // Check if the cache file exists
+        if (!fs.existsSync(pokemonDataPath)) {
+            // If cache doesn't exist, fetch from API and create cache
+            const response = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=1002`);
+            const pokemonsWithIds = response.data.results.map((pokemon: any, index: number) => ({
+                ...pokemon,
+                id: index + 1,
+                image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${index + 1}.svg`
+            }));
+
+            // Save to cache file
+            fs.writeFileSync(pokemonDataPath, JSON.stringify(pokemonsWithIds, null, 2));
+        }
+
+        // Read from cache file
+        const cachedData = JSON.parse(fs.readFileSync(pokemonDataPath, 'utf8'));
+
+        // Filter by name if provided
+        let filteredData = cachedData;
         if (name && typeof name === 'string') {
             const searchTerm = name.toLowerCase();
-            data = data.filter((pokemon: any) =>
+            filteredData = cachedData.filter((pokemon: any) =>
                 pokemon.name.toLowerCase().includes(searchTerm)
             );
         }
+
+        // Only fetch sounds for the filtered results
         const pokemons = await Promise.all(
-            data.map(async (pokemon: any, index: number) => {
-
-                // Only fetch detailed data for sound/cry if offset is less than 1025
+            filteredData.map(async (pokemon: any) => {
                 let sounds = { latest: "", legacy: "" };
-
-                const details = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon?.id}`);
-                const cries = details.data.cries;
-                sounds = {
-                    latest: cries?.latest || "",
-                    legacy: cries?.legacy || "",
-                };
+                try {
+                    const details = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon.id}`);
+                    const cries = details.data.cries;
+                    sounds = {
+                        latest: cries?.latest || "",
+                        legacy: cries?.legacy || "",
+                    };
+                } catch (error) {
+                    console.error(`Error fetching sounds for Pokemon ${pokemon.id}:`, error);
+                }
 
                 return {
                     name: pokemon.name,
                     url: pokemon.url,
-                    id: pokemon?.id,
-                    image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemon?.id}.svg`,
+                    id: pokemon.id,
+                    image: pokemon.image,
                     sounds,
                 };
             })
@@ -133,7 +152,7 @@ export const getAllPokemons = async (req: Request, res: Response) => {
 
         res.json(pokemons);
     } catch (error) {
-        // console.error('Error fetching pokemons:', error);
+        console.error('Error in getAllPokemons:', error);
         res.status(500).json({ error: 'Failed to fetch pokemons' });
     }
 }
